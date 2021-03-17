@@ -1,0 +1,51 @@
+declare-option -hidden str plugins_dir \
+    %sh{ echo "${XDG_DATA_HOME:-$HOME/.local/share}/kak/plugins" }
+declare-option -hidden str config_dir \
+    %sh{ echo "${XDG_CONFIG_HOME:-$HOME/.config}" }
+declare-option -hidden str bin_dir %sh{ echo "$HOME/.local/bin" }
+declare-option -hidden str kak_config_dir %val{config}
+
+# I don't like using a plugin manager, so I install my plugins manually.
+nop %sh{
+#     mkdir -p $kak_opt_plugins_dir
+# 
+#     # Install kak-lsp.
+#     if [ ! -e "$kak_opt_plugins_dir/kak-lsp" ]; then
+#         git clone -q https://github.com/kak-lsp/kak-lsp "$kak_opt_plugins_dir/kak-lsp"
+#         cd "$kak_opt_plugins_dir/kak-lsp"
+#         cargo build --release --locked
+#         cp "target/release/kak-lsp" "$kak_opt_bin_dir/kak-lsp"
+#         strip -s --strip-unneeded "$kak_opt_bin_dir/kak-lsp"
+#     fi
+# 
+#     if [ ! -e "$kak_opt_config_dir/kak-lsp/kak-lsp.toml" ]; then
+#         mkdir -p "$kak_opt_config_dir/kak-lsp"
+#         ln -sf "$kak_opt_kak_config_dir/kak-lsp.toml" "$kak_opt_config_dir/kak-lsp/kak-lsp.toml"
+#     fi
+# 
+#     # Download rust-analyzer if it doesn't exist.
+#     if ! type rust-analyzer > /dev/null; then
+#         cd $kak_opt_bin_dir
+#         curl -Lo "rust-analyzer.gz" \
+#             "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-linux.gz"
+#         gzip -d "rust-analyzer.gz"
+#         chmod u+x rust-analyzer
+#     fi
+}
+
+eval %sh{ kak-lsp --kakoune -s $kak_session }
+hook global WinSetOption filetype=(rust) %{
+    lsp-enable-window
+}
+
+hook global WinSetOption filetype=rust %{
+    hook window -group rust-inlay-hints BufReload .* rust-analyzer-inlay-hints
+    hook window -group rust-inlay-hints NormalIdle .* rust-analyzer-inlay-hints
+    hook window -group rust-inlay-hints InsertIdle .* rust-analyzer-inlay-hints
+    hook -once -always window WinSetOption filetype=.* %{
+        remove-hooks window rust-inlay-hints
+    }
+}
+
+add-highlighter global/ number-lines
+colorscheme dracula-transparent

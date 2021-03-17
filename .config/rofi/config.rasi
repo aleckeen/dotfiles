@@ -1,0 +1,4 @@
+configuration {
+  theme: "Arc-Dark";
+  font: "InconsolataGo Nerd Font 12";
+}

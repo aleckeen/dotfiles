@@ -1,0 +1,10 @@
+[user]
+	email = 37745048+byhowe@users.noreply.github.com
+	name = B. Howe
+	signingkey = F519589C7341DDC37EF8163216C2C2EA84A38544
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = development
+[gpg]
+	program = gpg2
