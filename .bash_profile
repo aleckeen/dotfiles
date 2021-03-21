@@ -1,9 +1,11 @@
 # This file is sourced by bash for login shells. The following line
 # runs your .bashrc and is recommended by the bash info pages.
 if [[ -f ~/.bashrc ]]; then
-  source "$HOME/.bashrc"
+  . ~/.bashrc
+elif [[ -f ~/.config/shell/common.sh ]]; then
+  . ~/.config/shell/common.sh
 else
-  source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/common.sh"
+  export XINITRC="$HOME/.config/xorg/xinitrc"
 fi
 
 # Autostart X at login.

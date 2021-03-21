@@ -1,3 +1,4 @@
+#!/bin/bash
 # This file is sourced by all *interactive* bash shells on startup,
 # including some apparently interactive shells such as scp and rcp
 # that can't tolerate any output. So make sure this doesn't display
@@ -104,4 +105,4 @@ fi
 # Try to keep environment pollution down, EPA loves us.
 unset use_color
 
-source "${XDG_CONFIG_DIR:-$HOME/.config}/shell/common.sh"
+. ~/.config/shell/common.sh
