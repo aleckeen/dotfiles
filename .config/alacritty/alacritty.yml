@@ -6,7 +6,7 @@ font:
     family: InconsolataGo Nerd Font
     style: Regular
 
-  size: 12
+  size: 10
 
 window:
   padding:

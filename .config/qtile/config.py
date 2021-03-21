@@ -2,7 +2,17 @@ import subprocess
 from typing import Optional, Any
 
 from libqtile import bar, layout, widget, extension, hook
-from libqtile.config import Click, Drag, Group, Key, Screen, ScratchPad, DropDown, Match
+from libqtile.config import (
+    Click,
+    Drag,
+    Group,
+    Key,
+    KeyChord,
+    Screen,
+    ScratchPad,
+    DropDown,
+    Match,
+)
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -308,6 +318,22 @@ keys = [
     Key([mod], "Down", lazy.spawn("mpc prev"), desc="Play previous mpd track"),
     Key([mod, "control"], "Up", lazy.spawn("mpc toggle"), desc="Toggle mpd track"),
     Key([mod, "control"], "Down", lazy.spawn("mpc stop"), desc="Stop mpd track"),
+    KeyChord(
+        ["control"],
+        "m",
+        [
+            Key([], "r", lazy.spawn("mpc repeat"), desc="Toggle mpd repeat mode"),
+            Key([], "z", lazy.spawn("mpc random"), desc="Toggle mpd random mode"),
+            Key([], "y", lazy.spawn("mpc single"), desc="Toggle mpd single mode"),
+            Key(
+                ["shift"],
+                "r",
+                lazy.spawn("mpc consume"),
+                desc="Toggle mpd consume mode",
+            ),
+            Key([], "p", lazy.spawn("mpc toggle"), desc="Toggle mpd play"),
+        ],
+    ),
 ]
 
 # Drag floating layouts.
