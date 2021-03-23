@@ -458,6 +458,7 @@ def create_window_name():
 def create_mpd():
     return [
         widget.Mpd2(
+            play_states={'pause': '', 'play': '', 'stop': ''},
             foreground=cs.bright_bg,
             background=cs.grey,
         )
