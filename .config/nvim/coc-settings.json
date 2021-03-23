@@ -27,6 +27,18 @@
   },
   "python.jediEnabled": false,
   "python.formatting.provider": "black",
+  "cSpell.showStatus": false,
+  "cSpell.language": "en",
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "git-commit",
+    "html",
+    "tex",
+    "markdown",
+    "plaintext",
+    "restructuredtext",
+    "text"
+  ],
   "clangd.checkUpdates": true,
   "html.format.preserveNewLines": false,
   "html.format.wrapLineLength": 110

@@ -48,7 +48,7 @@ set list
 set listchars=tab:.-,trail:.,extends:>
 
 let g:coc_global_extensions = [
-  \ 'coc-actions',
+  \ 'coc-spell-checker',
   \ 'coc-pairs',
   \ 'coc-snippets',
   \ 'coc-xml',
@@ -175,11 +175,6 @@ augroup end
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -334,6 +329,8 @@ nnoremap <silent> <leader>bp :bprev<CR>
 nnoremap <silent> <leader>bd :Kwbd<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>fr :Rg
+
+nnoremap <silent> <leader>l  :CocAction<CR>
 
 " Latex
 nnoremap <leader>lb :CocCommand latex.Build<CR>
