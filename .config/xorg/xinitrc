@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export WINIT_X11_SCALE_FACTOR=1
-# export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 xrandr --setprovideroutputsource modesetting NVIDIA-G0
 
