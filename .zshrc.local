@@ -1,0 +1,4 @@
+. ~/.config/shell/common.sh
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && exec startx "${XINITRC}"
