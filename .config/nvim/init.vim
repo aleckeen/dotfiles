@@ -42,6 +42,9 @@ colorscheme dracula
 
 hi Normal guibg=NONE ctermbg=NONE
 
+set list
+set listchars=tab:.-,trail:.,extends:>
+
 let g:coc_global_extensions = [
   \ 'coc-actions',
   \ 'coc-pairs',
