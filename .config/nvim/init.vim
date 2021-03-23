@@ -18,6 +18,7 @@ Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'liuchengxu/eleline.vim'
 
 call plug#end()
 
@@ -26,6 +27,7 @@ set autoread
 set clipboard=unnamed
 set expandtab
 set incsearch
+set laststatus=2
 set noerrorbells
 set noshowmode
 set noswapfile
