@@ -21,4 +21,4 @@ picom --config ~/.config/picom/picom.conf &
 nitrogen --restore &
 dunst &
 
-exec qtile
+exec "${WINDOW_MANAGER:-qtile}"
