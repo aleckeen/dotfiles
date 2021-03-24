@@ -332,6 +332,8 @@ keys = [
                 desc="Toggle mpd consume mode",
             ),
             Key([], "p", lazy.spawn("mpc toggle"), desc="Toggle mpd play"),
+            Key([], "n", lazy.spawn("mpc next"), desc="Play next mpd track"),
+            Key([], "b", lazy.spawn("mpc prev"), desc="Play previous mpd track"),
         ],
     ),
 ]
