@@ -174,6 +174,7 @@ scratchpads = [
     SP("m", terminal.construct_cmd(cmd="ncmpcpp"), dropdown_settings),
     SP("p", terminal.construct_cmd(cmd="htop"), dropdown_settings),
     SP("n", terminal.construct_cmd(cmd="newsboat"), dropdown_settings),
+    SP("b", terminal.construct_cmd(cmd="podboat"), dropdown_settings),
 ]
 
 keys = [
