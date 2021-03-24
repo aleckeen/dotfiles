@@ -1,17 +1,18 @@
+import os
 import subprocess
-from typing import Optional, Any
+from typing import Any, Optional
 
-from libqtile import bar, layout, widget, extension, hook
+from libqtile import bar, extension, hook, layout, widget
 from libqtile.config import (
     Click,
     Drag,
+    DropDown,
     Group,
     Key,
     KeyChord,
-    Screen,
-    ScratchPad,
-    DropDown,
     Match,
+    ScratchPad,
+    Screen,
 )
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -113,17 +114,17 @@ class SP:
 
 
 bar_size = 16
-normal_browser = "firefox-developer-edition"
+terminal = Terminal(os.getenv("TERMINAL") or "xterm", class_flag="--class", cmd_flag="-e")
+normal_browser = os.getenv("BROWSER") or "firefox"
 # code_browser = "qutebrowser"
 code_browser = normal_browser
 privacy_browser = "torbrowser-launcher"
 cs = ColorScheme.challenger_deep()
-editor = "emacs"
+editor = terminal.construct_cmd(cmd=os.getenv("EDITOR") or "nano")
 font = "JetBrainsMono Nerd Font"
 font_size = 12
 mod = "mod4"
 scratchpad_mask = [mod, "shift"]
-terminal = Terminal.alacritty()
 workspaces = [
     (None, {"layout": "stack"}),
     (None, {"layout": "monadtall"}),
@@ -461,7 +462,7 @@ def create_window_name():
 def create_mpd():
     return [
         widget.Mpd2(
-            play_states={'pause': '', 'play': '', 'stop': ''},
+            play_states={"pause": "", "play": "", "stop": ""},
             foreground=cs.bright_bg,
             background=cs.grey,
         )
