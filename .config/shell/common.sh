@@ -66,3 +66,8 @@ ex ()
   fi
 }
 
+test-window-manager ()
+{
+  startx "$XINITRC" -- /usr/bin/Xephyr -br -ac -noreset -screen "${1:-1600x900}" :1
+}
+
