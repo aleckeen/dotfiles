@@ -257,6 +257,9 @@ keys = [
     # qtile
     Key([mod, "shift", "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift", "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
+    # screen
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5"), desc="Lower screen brightness by 5%"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5"), desc="Raise screen brightness by 5%"),
     # multimedia
     Key(
         [],
