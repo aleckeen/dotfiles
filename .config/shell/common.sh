@@ -20,6 +20,7 @@ alias exa="exa --color=always --group-directories-first"
 alias ls="exa"
 alias la="ls -a"
 alias ll="ls -lah"
+alias l="ls -lah"
 
 alias ydl-audio="youtube-dl --audio-quality 0 --extract-audio --audio-format flac"
 alias ydl-video="youtube-dl -f 'bestvideo+bestaudio' --merge-output-format mp4 --audio-quality 0"
