@@ -114,7 +114,9 @@ class SP:
 
 
 bar_size = 16
-terminal = Terminal(os.getenv("TERMINAL") or "xterm", class_flag="--class", cmd_flag="-e")
+terminal = Terminal(
+    os.getenv("TERMINAL") or "xterm", class_flag="--class", cmd_flag="-e"
+)
 normal_browser = os.getenv("BROWSER") or "firefox"
 # code_browser = "qutebrowser"
 code_browser = normal_browser
@@ -171,7 +173,7 @@ dropdown_settings = {
 scratchpads = [
     SP("a", terminal.construct_cmd(cmd="tmux -u"), dropdown_settings),
     SP("s", terminal.construct_cmd(cmd="pulsemixer"), dropdown_settings),
-    SP("d", terminal.construct_cmd(cmd="range"), dropdown_settings),
+    SP("d", terminal.construct_cmd(cmd="ranger"), dropdown_settings),
     SP("m", terminal.construct_cmd(cmd="ncmpcpp"), dropdown_settings),
     SP("p", terminal.construct_cmd(cmd="htop"), dropdown_settings),
     SP("n", terminal.construct_cmd(cmd="newsboat"), dropdown_settings),
@@ -187,6 +189,7 @@ keys = [
     Key([mod], "w", lazy.function(launch_web_browser), desc="Launch web browser"),
     Key([mod], "e", lazy.spawn(editor), desc="Launch text editor"),
     Key([mod], "v", lazy.spawn("virtualbox"), desc="Launch virtualbox"),
+    Key([mod], "d", lazy.spawn("pcmanfm"), desc="Launch PCManFM"),
     # menu
     Key(
         [mod],
@@ -258,8 +261,18 @@ keys = [
     Key([mod, "shift", "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift", "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     # screen
-    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5"), desc="Lower screen brightness by 5%"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5"), desc="Raise screen brightness by 5%"),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn("xbacklight -dec 5"),
+        desc="Lower screen brightness by 5%",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn("xbacklight -inc 5"),
+        desc="Raise screen brightness by 5%",
+    ),
     # multimedia
     Key(
         [],
