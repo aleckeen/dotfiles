@@ -17,7 +17,7 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article cyan default
 
-macro y set browser "mpv -x11-name newsboat-video %u" ; open-in-browser ; set browser "elinks %u"
+macro y set browser "mpv -x11-name newsboat-video --ytdl-format='bestvideo[height<=?720]+bestaudio/best' %u" ; open-in-browser ; set browser "elinks %u"
 
 # Podboat items
 download-path "~/Downloads/Podcasts/%h/%n"
