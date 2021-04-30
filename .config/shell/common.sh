@@ -1,4 +1,5 @@
-export PATH="$HOME/.local/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$HOME/.local/bin:$PATH"
 
 # XDG
 export XDG_DATA_HOME="$HOME/.local/share"
