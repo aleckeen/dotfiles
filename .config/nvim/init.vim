@@ -16,12 +16,14 @@ call plug#begin()
 Plug 'airblade/vim-rooter'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rust-lang/rust.vim'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'liuchengxu/eleline.vim'
 
 call plug#end()
 
+filetype plugin indent on
 syntax on
 set autoread
 set clipboard=unnamed
@@ -49,6 +51,7 @@ set listchars=tab:.-,trail:.,extends:>
 
 let g:coc_global_extensions = [
   \ 'coc-spell-checker',
+  \ 'coc-cspell-dicts',
   \ 'coc-pairs',
   \ 'coc-snippets',
   \ 'coc-xml',
