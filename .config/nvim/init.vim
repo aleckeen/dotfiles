@@ -66,6 +66,7 @@ let g:coc_global_extensions = [
   \ 'coc-cmake',
   \ 'coc-python',
   \ 'coc-java',
+  \ 'coc-go',
   \ ]
 
 " Trigger `autoread` when files changes on disk
@@ -75,6 +76,13 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
 " Notification after file change
 autocmd FileChangedShellPost *
   \ echo "File changed on disk. Buffer reloaded." | echohl None
+
+" Add missing imports on save for go
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
