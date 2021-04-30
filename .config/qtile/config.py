@@ -122,7 +122,7 @@ normal_browser = os.getenv("BROWSER") or "firefox"
 code_browser = normal_browser
 privacy_browser = "torbrowser-launcher"
 cs = ColorScheme.challenger_deep()
-editor = terminal.construct_cmd(cmd=os.getenv("EDITOR") or "nano")
+editor = os.getenv("VISUAL") or terminal.construct_cmd(cmd=os.getenv("EDITOR") or "vim")
 font = "JetBrainsMono Nerd Font"
 font_size = 12
 mod = "mod4"
