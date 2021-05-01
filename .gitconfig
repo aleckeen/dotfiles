@@ -8,3 +8,5 @@
 	defaultBranch = development
 [gpg]
 	program = gpg2
+[core]
+	editor = vim
