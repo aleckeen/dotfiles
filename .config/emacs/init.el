@@ -1,7 +1,11 @@
 ;; GUI settings
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(column-number-mode 1)
+(show-paren-mode 1)
+(setq whitespace-style '(face tabs tab-mark trailing))
+(global-whitespace-mode)
 
 ;; Font
 (set-face-attribute 'default nil
@@ -50,29 +54,19 @@
   :config
   (projectile-global-mode 1))
 
-;; Theme
-(use-package doom-themes
+;; Install counsel
+(use-package counsel
   :ensure t
   :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-ayu-mirage t)
+  (counsel-mode))
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-(use-package doom-modeline
+;; Theme
+(use-package all-the-icons
+  :ensure t)
+
+(use-package gruber-darker-theme
   :ensure t
-  :init (doom-modeline-mode 1))
+  :config (load-theme 'gruber-darker t))
 
 (use-package dashboard
   :ensure t
@@ -80,11 +74,8 @@
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Welcome")
-  (setq dashboard-items '((recents . 10)
-			  (agenda . 5)
-			  (bookmarks . 5)
-			  (projects . 5)
-			  (registers . 5)))
+  (setq dashboard-items '((recents . 15)
+                          (projects . 15)))
   :config
   (dashboard-setup-startup-hook))
 
@@ -113,7 +104,7 @@
 
 (nvmap :states '(normal visual) :keymaps 'override :prefix "SPC"
        "SPC" '(counsel-M-x :which-key "M-x")
-       "f f" '(find-file :which-key "Find file")
+       "f f" '(counsel-find-file :which-key "Find file")
        ;; Window splits
        "w d" '(evil-window-delete :which-key "Close window")
        "w n" '(evil-window-new :which-key "New window")
@@ -145,7 +136,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(general which-key doom-themes evil-collection evil use-package)))
+   '(general which-key go-mode rust-mode dashboard gruber-darker-theme all-the-icons counsel projectile evil-collection evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
