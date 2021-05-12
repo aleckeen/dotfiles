@@ -32,28 +32,10 @@ local path = require("path")
 local pm = require("pm")
 local uv = vim.loop
 
-local bin = vim.fn.stdpath("data") .. "/bin"
-if not path.is_dir(bin) then vim.fn.mkdir(bin, "p") end
-vim.env.PATH = bin .. ":" .. vim.env.PATH
-
-local rust_analyzer = bin .. "/rust-analyzer"
-local url = "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-linux"
-
-if not path.is_file(rust_analyzer) then
-  uv.spawn("curl", {
-    args = { "-fLo", rust_analyzer, "--create-dirs", url }
-  }, function(code, _)
-    if code ~= 0 then
-      print("downloading rust-analyzer failed")
-    else
-      uv.spawn("chmod", {
-        args = { "u+x", rust_analyzer }
-      }, function(_, _) end)
-    end
-  end)
-end
-
 pm.init()
+
+local url = "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-linux"
+pm.download_executable(url, "rust-analyzer")
 
 pm.pm { git    = "https://github.com/gruvbox-community/gruvbox.git"
       , as     = "gruvbox"
@@ -85,40 +67,7 @@ pm.pm { git    = "https://github.com/neovim/nvim-lspconfig.git"
       , as     = "nvim-lspconfig"
       , after  = "completion-nvim"
       , config = function()
-          local lsp = require("lspconfig")
-
-          local function on_attach(client)
-            require("completion").on_attach(client)
-          end
-
-          --lsp.rust_analyzer.setup({
-          --  on_attach = on_attach,
-          --  settings = {
-          --    ["rust-analyzer"] = {
-          --      assist = {
-          --        importMergeBehavior = "last",
-          --        importPrefix = "by_self",
-          --      },
-          --      cargo = {
-          --        loadOutDirsFromCheck = true,
-          --      },
-          --      procMacro = {
-          --        enable = true,
-          --      }
-          --    }
-          --  }
-          --})
-          -- Enable rust_analyzer
-          lsp.rust_analyzer.setup({ on_attach=on_attach })
-          
-          -- Enable diagnostics
-          vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-            vim.lsp.diagnostic.on_publish_diagnostics, {
-              virtual_text = true,
-              signs = true,
-              update_in_insert = true,
-            }
-          )
+          require("rust")
         end
       }
 pm.pm { git = "https://github.com/nvim-lua/lsp_extensions.nvim.git"

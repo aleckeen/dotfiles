@@ -7,13 +7,31 @@ local cmd = vim.api.nvim_command
 
 local config = {
   git = "git",
-  dir = fn.stdpath("data") .. "/site/pack/pm"
+  dir = fn.stdpath("data") .. "/site/pack/pm",
+  bin = fn.stdpath("data") .. "/bin",
 }
 
 -- installed packages
 local packages = {}
 -- packages to be installed after a specific package
 local after_packages = {}
+
+local function download_executable(url, name)
+  if path.is_file(config.bin .. "/" .. name) then return end
+  uv.spawn("curl", {
+    args = { "-fLo", name, url },
+    cwd = config.bin
+  }, function(code, _)
+    if code ~= 0 then
+      print("downloading " .. name .. " failed")
+    else
+      uv.spawn("chmod", {
+        args = { "u+x", name },
+        cwd = config.bin
+      }, function(_, _) end)
+    end
+  end)
+end
 
 -- { git   :: url          # url of the git repository
 -- , as    :: string       # name of the package
@@ -48,6 +66,7 @@ local function init(args)
   if args then
     if args.git then config.git = args.git end
     if args.dir then config.dir = args.dir end
+    if args.bin then config.bin = args.bin end
   end
 
   local optdir = config.dir .. "/opt"
@@ -55,6 +74,8 @@ local function init(args)
   if not path.is_dir(config.dir) then fn.mkdir(config.dir, 'p') end
   if not path.is_dir(optdir) then fn.mkdir(optdir, 'p') end
   if not path.is_dir(startdir) then fn.mkdir(startdir, 'p') end
+  if not path.is_dir(config.bin) then fn.mkdir(config.bin, 'p') end
+  vim.env.PATH = config.bin .. ":" .. vim.env.PATH
 end
 
 local pm
@@ -88,7 +109,7 @@ function pm(args)
   if not path.is_dir(args.path .. "/" .. args.as) then
     uv.spawn(config.git, {
       args = { "clone", "--depth", "1", args.git, args.as },
-      cwd = args.path
+      cwd = args.path,
     }, vim.schedule_wrap(function(code, _)
       if code == 0 then
         install_hook(args)
@@ -104,4 +125,5 @@ end
 return {
   init = init,
   pm   = pm,
+  download_executable = download_executable,
 }
