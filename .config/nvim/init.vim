@@ -1,6 +1,6 @@
 set background=dark
 set cmdheight=2
-set colorcolumn=80
+set colorcolumn=100
 set completeopt=menuone,noinsert,noselect
 set expandtab
 set hidden
@@ -37,10 +37,11 @@ pm.init()
 local url = "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-linux"
 pm.download_executable(url, "rust-analyzer")
 
-pm.pm { git    = "https://github.com/gruvbox-community/gruvbox.git"
-      , as     = "gruvbox"
+pm.pm { git    = "https://github.com/ayu-theme/ayu-vim.git"
+      , as     = "ayu"
       , config = function()
-          vim.cmd("colorscheme gruvbox")
+          vim.g.ayucolor = "mirage"
+          vim.cmd("colorscheme ayu")
           vim.cmd("hi Normal guibg=none")
         end }
 
@@ -129,6 +130,25 @@ nnoremap <silent> <leader>wl :wincmd l<cr>
 nnoremap <silent> <leader>wv :wincmd v<cr>
 nnoremap <silent> <leader>ws :wincmd s<cr>
 nnoremap <silent> <leader>wd :q<cr>
+
+nnoremap <A-a> :terminal<cr>
+nnoremap <A-m> :terminal ncmpcpp<cr>
+nnoremap <A-p> :terminal htop<cr>
+nnoremap <A-n> :terminal newsboat<cr>
+"tnoremap <silent> <leader>a :terminal<cr>
+tnoremap <A-Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
