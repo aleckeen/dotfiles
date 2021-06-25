@@ -171,7 +171,7 @@ dropdown_settings = {
 }
 
 scratchpads = [
-    SP("a", terminal.construct_cmd(cmd="tmux -u"), dropdown_settings),
+    SP("a", terminal.construct_cmd(cmd="nvim +terminal"), dropdown_settings),
     SP("s", terminal.construct_cmd(cmd="pulsemixer"), dropdown_settings),
     SP("d", terminal.construct_cmd(cmd="ranger"), dropdown_settings),
     SP("m", terminal.construct_cmd(cmd="ncmpcpp"), dropdown_settings),
@@ -260,6 +260,7 @@ keys = [
     # qtile
     Key([mod, "shift", "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift", "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
+    Key([mod], "s", lazy.spawn("slock"), desc="Lock screen"),
     # screen
     Key(
         [],
