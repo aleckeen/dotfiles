@@ -3,10 +3,10 @@ env:
 
 font:
   normal:
-    family: InconsolataGo Nerd Font
+    family: Ubuntu Mono
     style: Regular
 
-  size: 10
+  size: 11
 
 window:
   padding:
