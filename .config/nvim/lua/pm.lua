@@ -107,7 +107,7 @@ function pm(args)
   end
 
   if not path.is_dir(args.path .. "/" .. args.as) then
-    uv.spawn(config.git, {
+    local handle = uv.spawn(config.git, {
       args = { "clone", "--depth", "1", args.git, args.as },
       cwd = args.path,
     }, vim.schedule_wrap(function(code, _)

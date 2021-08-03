@@ -34,8 +34,8 @@ local uv = vim.loop
 
 pm.init()
 
-local url = "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-linux"
-pm.download_executable(url, "rust-analyzer")
+-- local url = "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-x86_64-unknown-linux-musl.gz"
+-- pm.download_executable(url, "rust-analyzer.gz")
 
 pm.pm { git    = "https://github.com/ayu-theme/ayu-vim.git"
       , as     = "ayu"
@@ -69,6 +69,7 @@ pm.pm { git    = "https://github.com/neovim/nvim-lspconfig.git"
       , after  = "completion-nvim"
       , config = function()
           require("rust")
+          require("cc")
         end
       }
 pm.pm { git = "https://github.com/nvim-lua/lsp_extensions.nvim.git"
@@ -119,6 +120,7 @@ vnoremap <silent> <Down> gj
 vnoremap <silent> <Up> gk
 inoremap <silent> <Down> <C-o>gj
 inoremap <silent> <Up> <C-o>gk
+nnoremap <silent> n nzz
 
 nnoremap <silent> . <NOP>
 
@@ -131,12 +133,13 @@ nnoremap <silent> <leader>wv :wincmd v<cr>
 nnoremap <silent> <leader>ws :wincmd s<cr>
 nnoremap <silent> <leader>wd :q<cr>
 
-nnoremap <A-a> :terminal<cr>
+nnoremap <A-a> :terminal<cr>i
 nnoremap <A-m> :terminal ncmpcpp<cr>
 nnoremap <A-p> :terminal htop<cr>
 nnoremap <A-n> :terminal newsboat<cr>
 "tnoremap <silent> <leader>a :terminal<cr>
 tnoremap <A-Esc> <C-\><C-n>
+tnoremap <A-x> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
