@@ -3,7 +3,7 @@ env:
 
 font:
   normal:
-    family: Ubuntu Mono
+    family: InconsolataGo Nerd Font
     style: Regular
 
   size: 11
