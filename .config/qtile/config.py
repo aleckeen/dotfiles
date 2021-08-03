@@ -660,7 +660,6 @@ floating_layout = layout.Floating(
         *layout.Floating.default_float_rules,
         Match(wm_class="Steam"),
         Match(wm_class="Lxpolkit"),
-        Match(wm_class="Bitwarden"),
         Match(wm_class="newsboat-video"),
     ],
 )
