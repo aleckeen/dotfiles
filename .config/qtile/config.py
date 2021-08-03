@@ -217,19 +217,33 @@ keys = [
         lazy.layout.next(),
         desc="Switch window focus to other pane(s) of stack",
     ),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus left in stack pane"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down in stack pane"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up in stack pane"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus right in stack pane"),
     Key(
         [mod, "shift"],
         "j",
         lazy.layout.shuffle_down(),
-        desc="Move window down in current stack ",
+        desc="Move window down in current stack",
     ),
     Key(
         [mod, "shift"],
         "k",
         lazy.layout.shuffle_up(),
-        desc="Move window up in current stack ",
+        desc="Move window up in current stack",
+    ),
+    Key(
+        [mod, "shift"],
+        "h",
+        lazy.layout.client_to_previous(),
+        desc="Move window to the previous stack"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.client_to_next(),
+        desc="Move window to the next stack"
     ),
     Key(
         [mod, "shift"],
