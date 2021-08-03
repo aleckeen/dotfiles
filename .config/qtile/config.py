@@ -571,12 +571,13 @@ def create_current_layout(background):
     return [widget.CurrentLayout(foreground=cs.bright_bg, background=cs.yellow)]
 
 
-def create_clock(background):
+def create_anchor(background):
     return [
-        widget.Clock(
+        widget.GenPollText(
             foreground=cs.bright_bg,
             background=cs.blue,
-            format="%A",
+            func=lambda: " " + subprocess.check_output("curl -s https://am.i.mullvad.net/city", shell=True).decode().split("\n")[0],
+            update_interval=600,
         )
     ]
 
@@ -627,7 +628,7 @@ def default_bar(screen_index=0) -> bar.Bar:
     widgets.extend(create_current_layout(0))
 
     widgets.extend(create_seperator())
-    widgets.extend(create_clock(1))
+    widgets.extend(create_anchor(1))
 
     widgets.extend(create_seperator())
     widgets.extend(create_keyboard_layout())
