@@ -420,8 +420,8 @@ for i, sp in enumerate(scratchpads):
 groups.append(ScratchPad("scratchpad", dropdowns))
 
 layout_theme = {
-    "margin": 3,
-    "border_width": 2,
+    "margin": 0,
+    "border_width": 1,
     "border_focus": cs.blue,
     "border_normal": cs.bg,
 }
