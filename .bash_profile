@@ -12,3 +12,5 @@ fi
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx "$XINITRC"
 fi
+
+source /home/charlie/.config/broot/launcher/bash/br
