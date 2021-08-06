@@ -58,10 +58,10 @@ nnoremap <silent> <leader>ws :wincmd s<cr>
 nnoremap <silent> <leader>wd :q<cr>
 
 nnoremap <A-a> :terminal<cr>i
-nnoremap <A-m> :terminal ncmpcpp<cr>
-nnoremap <A-p> :terminal htop<cr>
-nnoremap <A-n> :terminal newsboat<cr>
-nnoremap <A-s> :terminal pulsemixer<cr>
+nnoremap <A-m> :terminal ncmpcpp<cr>i
+nnoremap <A-p> :terminal htop<cr>i
+nnoremap <A-n> :terminal newsboat<cr>i
+nnoremap <A-s> :terminal pulsemixer<cr>i
 
 tnoremap <A-Esc> <C-\><C-n>
 tnoremap <A-q> <C-\><C-n>
