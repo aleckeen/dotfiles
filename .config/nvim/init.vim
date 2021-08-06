@@ -28,6 +28,69 @@ syntax enable
 filetype plugin indent on
 
 lua << EOF
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+local packer_repo = "https://github.com/wbthomason/packer.nvim"
+local packer = fn.join({fn.stdpath("data"), "site", "pack", "packer", "start", "packer.nvim"}, "/")
+
+if fn.empty(fn.glob(packer)) > 0 then
+  execute "echo 'Downloading `packer.nvim`.'"
+  fn.system({"git", "clone", packer_repo, packer})
+  execute "packadd packer.nvim"
+end
+
+vim.cmd [[packadd packer.nvim]]
+
+local packer = require("packer")
+
+packer.startup(function(use)
+  use { "wbthomason/packer.nvim" }
+
+  -- Visual
+  use {
+    "ayu-theme/ayu-vim",
+    config = function()
+      vim.g.ayucolor = "mirage"
+      vim.cmd [[colorscheme ayu]]
+      vim.cmd [[hi Normal guibg=none]]
+    end,
+  }
+  use {
+    "hoob3rt/lualine.nvim",
+    config = function()
+      require("lualine").setup {
+        options = {
+          icons_enabled = true,
+          theme = 'horizon',
+          component_separators = {'', ''},
+          section_separators = {'', ''},
+          disabled_filetypes = {}
+        },
+        sections = {
+          lualine_a = {'mode'},
+          lualine_b = {'branch'},
+          lualine_c = {'filename'},
+          lualine_x = {'encoding', 'fileformat', 'filetype'},
+          lualine_y = {'progress'},
+          lualine_z = {'location'}
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {'filename'},
+          lualine_x = {'location'},
+          lualine_y = {},
+          lualine_z = {}
+        },
+        tabline = {},
+        extensions = {}
+      }
+    end,
+    requires = {"kyazdani42/nvim-web-devicons", opt = true},
+  }
+end)
+
 EOF
 
 nnoremap <silent> k gk
