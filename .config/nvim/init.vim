@@ -20,7 +20,7 @@ set smartcase
 set smartindent
 set tabstop=2 softtabstop=2
 set termguicolors
-set undodir=~/.cache/neovim/undodir
+let &undodir = join([stdpath("cache"), "undo"], "/")
 set undofile
 set updatetime=50
 
