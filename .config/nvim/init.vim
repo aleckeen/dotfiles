@@ -42,7 +42,9 @@ vnoremap <silent> <Down> gj
 vnoremap <silent> <Up> gk
 inoremap <silent> <Down> <C-o>gj
 inoremap <silent> <Up> <C-o>gk
+
 nnoremap <silent> n nzz
+nnoremap <silent> b bzz
 
 nnoremap <silent> . <NOP>
 
