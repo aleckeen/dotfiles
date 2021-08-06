@@ -55,7 +55,7 @@ nnoremap <silent> <leader>wk :wincmd k<cr>
 nnoremap <silent> <leader>wl :wincmd l<cr>
 nnoremap <silent> <leader>wv :wincmd v<cr>
 nnoremap <silent> <leader>ws :wincmd s<cr>
-nnoremap <silent> <leader>wd :q<cr>
+nnoremap <silent> <leader>wd :wincmd q<cr>
 
 nnoremap <A-a> :terminal<cr>i
 nnoremap <A-m> :terminal ncmpcpp<cr>i
