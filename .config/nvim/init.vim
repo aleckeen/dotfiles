@@ -134,6 +134,7 @@ packer.startup(function(use)
     config = function() require("rust-tools").setup({}) end
   }
   use { "kabouzeid/nvim-lspinstall" }
+  use { "udalov/kotlin-vim" }
 
   -- Tools
   use {
