@@ -10,4 +10,8 @@
 	program = gpg2
 [core]
 	editor = nvim
-	excludesfile = /home/charlie/.gitignore
+	excludesfile = ~/.gitignore
+[color]
+	pager = true
+[pager]
+	status = true
