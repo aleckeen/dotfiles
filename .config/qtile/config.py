@@ -661,6 +661,7 @@ floating_layout = layout.Floating(
         Match(wm_class="Steam"),
         Match(wm_class="Lxpolkit"),
         Match(wm_class="newsboat-video"),
+        Match(wm_class="Nm-connection-editor"),
     ],
 )
 auto_fullscreen = True
