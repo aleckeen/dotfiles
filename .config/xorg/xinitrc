@@ -20,6 +20,7 @@ lxpolkit &
 picom --config ~/.config/picom/picom.conf &
 nitrogen --restore &
 dunst &
+nm-applet &
 
 # exec "${WINDOW_MANAGER:-qtile}"
 exec qtile start
