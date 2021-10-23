@@ -128,15 +128,15 @@ font_size = 12
 mod = "mod4"
 scratchpad_mask = [mod, "shift"]
 workspaces = [
-    (None, {"layout": "stack"}),
-    (None, {"layout": "monadtall"}),
-    (None, {"layout": "monadtall"}),
-    (None, {"layout": "monadtall"}),
-    (None, {"layout": "monadtall"}),
-    (None, {"layout": "monadtall"}),
+    (None, {"layout": "max"}),
+    (None, {"layout": "max"}),
+    (None, {"layout": "max"}),
+    (None, {"layout": "max"}),
+    (None, {"layout": "max"}),
+    (None, {"layout": "max"}),
     (None, {"layout": "floating"}),
-    (None, {"layout": "monadtall"}),
-    (None, {"layout": "monadtall"}),
+    (None, {"layout": "max"}),
+    (None, {"layout": "max"}),
 ]
 
 

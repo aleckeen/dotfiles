@@ -1,6 +1,9 @@
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$HOME/.local/bin:$PATH"
 
+export RUSTUP_TOOLCHAIN="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu"
+export PATH="$RUSTUP_TOOLCHAIN/bin:$PATH"
+
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$ANDROID_HOME/tools/bin:$PATH"
 
@@ -78,3 +81,4 @@ test-window-manager ()
 }
 
 source ~/.config/broot/launcher/bash/br
+[ -f "/home/charlie/.ghcup/env" ] && source "/home/charlie/.ghcup/env" # ghcup-env
